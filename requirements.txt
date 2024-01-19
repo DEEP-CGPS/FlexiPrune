@@ -1,17 +1,6 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: win-64
-asttokens=2.4.1=pyhd8ed1ab_0
-backcall=0.2.0=pyh9f0ad1d_0
-blas=1.0=mkl
-brotli-python=1.0.9=py39hd77b12b_7
-ca-certificates=2023.11.17=h56e8100_0
-certifi=2023.11.17=pyhd8ed1ab_0
-cffi=1.16.0=py39h2bbff1b_0
-charset-normalizer=2.0.4=pyhd3eb1b0_0
-colorama=0.4.6=pyhd8ed1ab_0
-comm=0.2.1=pyhd8ed1ab_0
-cryptography=41.0.7=py39h89fc84f_0
 cuda-cccl=12.3.101=0
 cuda-cudart=11.8.89=0
 cuda-cudart-dev=11.8.89=0
