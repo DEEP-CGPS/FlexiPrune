@@ -7,7 +7,7 @@ Library for pruning convolutional neural networks by varying the pruning distrib
 PruningDistribution can be installed using pip:
 
 ```bash
-pip3 install PruningDistribution
+pip install pruningdistribution==0.1.0
 ```
 
 or if you want to run the latest version of the code, you can install from git:
