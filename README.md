@@ -132,7 +132,7 @@ prune_model(model,num_classes,trainset, args)
 
 ### Submodules
 
-PruningDistribution contains 8 modules that allow to train, prune, generate result tables, and identify model properties (e.g., parameters, number of layers):
+pruningdistribution contains 8 modules that allow to train, prune, generate result tables, and identify model properties (e.g., parameters, number of layers):
 
 #### modelParams:
 
