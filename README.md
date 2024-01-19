@@ -30,19 +30,19 @@ The main function "PruningDistribution"  provides all the tools necessary to pru
 
 Parse command-line arguments for configuring and training a neural network model.
     
-`--model_architecture (str):` Specify the architecture of the model (e.g., VGG16, AlexNet, etc.).
-`--method (str):` Specify the training method (e.g., SenpisFaster, random, weight).
-`--dataset (str):` Specify the dataset for training (e.g., CIFAR10, "Name of custom dataset").
-`--batch_size (int):` Set the batch size for training.
-`--num_epochs (int):` Specify the number of training epochs.
-`--learning_rate (float):` Set the learning rate for the optimizer.
-`--optimizer_val (str):` Specify the optimizer for training (e.g., SGD, Adam, etc.).
-`--model_type (str):` Specify the type of the model (e.g., PRUNED or UNPRUNED).
-`--device (str):` Specify the device for training (e.g., "cuda:0" for GPU).
-`--model_input (torch.Tensor):` Input tensor for the model (default is a tensor of ones).
-`--eval_metric (str):` Specify the evaluation metric (e.g., accuracy, f1).
-`--seed (int):` Set the seed for random pruning operations.
-`--list_pruning (list):` Specify the list of pruning ratios for each layer.
+- `model_architecture (str):` Specify the architecture of the model (e.g., VGG16, AlexNet, etc.).
+- `method (str):` Specify the training method (e.g., SenpisFaster, random, weight).
+- `dataset (str):` Specify the dataset for training (e.g., CIFAR10, "Name of custom dataset").
+- `batch_size (int):` Set the batch size for training.
+- `num_epochs (int):` Specify the number of training epochs.
+- `learning_rate (float):` Set the learning rate for the optimizer.
+- `optimizer_val (str):` Specify the optimizer for training (e.g., SGD, Adam, etc.).
+- `model_type (str):` Specify the type of the model (e.g., PRUNED or UNPRUNED).
+- `device (str):` Specify the device for training (e.g., "cuda:0" for GPU).
+- `model_input (torch.Tensor):` Input tensor for the model (default is a tensor of ones).
+- `eval_metric (str):` Specify the evaluation metric (e.g., accuracy, f1).
+- `seed (int):` Set the seed for random pruning operations.
+- `list_pruning (list):` Specify the list of pruning ratios for each layer.
 
 #### Minimal working example
 
