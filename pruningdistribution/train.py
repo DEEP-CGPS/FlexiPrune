@@ -11,7 +11,7 @@ from pruningdistribution.custom_dataset import dataset_list, CustomDataset
 
 
 ##===================================================================================##
-##===================================================================================##
+##==================================MODEL============================================##
 ##===================================================================================##
 
 
@@ -23,11 +23,36 @@ def get_model(num_classes, args):
     elif args.model_architecture == "VGG16":
         model = torchvision.models.vgg16_bn(weights="VGG16_BN_Weights.IMAGENET1K_V1") 
         model.classifier[6] = nn.Linear(4096,num_classes)
+    elif args.model_architecture == "DenseNet121":
+        model = torchvision.models.densenet121(weights="DenseNet121_Weights.DEFAULT")
+        num_fltrs = model.classifier.in_features
+        model.classifier = nn.Linear(num_fltrs, num_classes)
+    elif args.model_architecture == "MobileNetV2":
+        model = torchvision.models.mobilenet_v2(weights="MobileNetV2_Weights.DEFAULT")
+        num_fltrs = model.classifier[1].in_features
+        model.classifier[1] = nn.Linear(num_fltrs, num_classes)
+    elif args.model_architecture == "AlexNet":
+        model = torchvision.models.alexnet(weights="AlexNet_Weights.DEFAULT")
+        num_fltrs = model.classifier[6].in_features
+        model.classifier[6] = nn.Linear(num_fltrs, num_classes)
+    elif args.model_architecture == "VGG11":
+        model = torchvision.models.vgg11_bn(weights="VGG11_BN_Weights.IMAGENET1K_V1")
+        model.classifier[6] = nn.Linear(4096, num_classes)
+    elif args.model_architecture == "VGG19":
+        model = torchvision.models.vgg19_bn(weights="VGG19_BN_Weights.IMAGENET1K_V1")
+        model.classifier[6] = nn.Linear(4096, num_classes)
+    # Add more models as needed
+    # Example: elif args.model_architecture == "AnotherModel":
+    #              model = models.another_model(pretrained=True)
+    #              num_fltrs = model.fc.in_features  # Adjust based on the model's architecture
+    #              model.fc = nn.Linear(num_fltrs, num_classes)
+    else:
+        raise ValueError("Model architecture not supported")
     return model
 
 
 ##===================================================================================##
-##===================================================================================##
+##===================================DATASET=========================================##
 ##===================================================================================##
 
 
@@ -41,30 +66,52 @@ def get_dataset(args, custom_split = 0):
         trainset = torchvision.datasets.CIFAR10(root='./data', train=True,
                                                 download=True, transform=transform)
         testset = torchvision.datasets.CIFAR10(root='./data', train=False,
-                                           download=True, transform=transform)
+                                               download=True, transform=transform)
         num_classes = len(trainset.classes)
-        
+    elif args.dataset == "CIFAR100":
+        trainset = torchvision.datasets.CIFAR100(root='./data', train=True,
+                                                 download=True, transform=transform)
+        testset = torchvision.datasets.CIFAR100(root='./data', train=False,
+                                                download=True, transform=transform)
+        num_classes = len(trainset.classes)
+    elif args.dataset == "FashionMNIST":
+        trainset = torchvision.datasets.FashionMNIST(root='./data', train=True,
+                                                      download=True, transform=transform)
+        testset = torchvision.datasets.FashionMNIST(root='./data', train=False,
+                                                     download=True, transform=transform)
+        num_classes = len(trainset.classes)
+    # Add more datasets as needed
+    # Example: elif args.dataset == "AnotherDataset":
+    #              trainset = torchvision.datasets.AnotherDataset(root='./data', train=True,
+    #                                                            download=True, transform=transform)
+    #              testset = torchvision.datasets.AnotherDataset(root='./data', train=False,
+    #                                                           download=True, transform=transform)
+    #              num_classes = len(trainset.classes)
         
     else:
+        # Check if a custom split is specified
         if custom_split == 0:
-            data_dir = f'./data/{args.dataset}'
-            train_list, test_list, class_names = dataset_list(data_dir)
-            num_classes = len(class_names)
+            # Case: Use the default split for training and testing
+            data_dir = f'./data/{args.dataset}'  # Path to the dataset directory
+            train_list, test_list, class_names = dataset_list(data_dir)  # Get lists of training and testing data files, and class names
+            num_classes = len(class_names)  # Number of classes in the dataset
 
-            trainset = CustomDataset(train_list,transform)
-            testset = CustomDataset(test_list,transform)
+            # Create custom dataset objects for training and testing with the specified transformation
+            trainset = CustomDataset(train_list, transform)
+            testset = CustomDataset(test_list, transform)
             
         else:
-            data_dir = f'./data/{args.dataset}/'
+            # Case: Use a custom split for training and testing
+            data_dir = f'./data/{args.dataset}/'  # Path to the dataset directory
             image_datasets = {x: torchvision.datasets.ImageFolder(os.path.join(data_dir, x))
-                                                                 for x in ["train", "test"]}
-            
-            num_classes = len(image_datasets['train'].classes)
+                                                for x in ["train", "test"]}  # Create ImageFolder datasets for training and testing
 
-            trainset = CustomDataset(image_datasets['train'],transform)
-            testset = CustomDataset(image_datasets['test'],transform)
-        
-        
+            num_classes = len(image_datasets['train'].classes)  # Number of classes in the dataset
+
+            # Create custom dataset objects for training and testing with the specified transformation
+            trainset = CustomDataset(image_datasets['train'], transform)
+            testset = CustomDataset(image_datasets['test'], transform)
+                
     train_loader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size,
                                           shuffle=True, num_workers=0)
     test_loader = torch.utils.data.DataLoader(testset, batch_size=args.batch_size,

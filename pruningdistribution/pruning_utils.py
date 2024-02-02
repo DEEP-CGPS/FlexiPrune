@@ -25,7 +25,7 @@ def prune_model(model: nn.Module, num_classes: int = None, train_loader = None, 
     pos = 0
     model.to(args.device)
     model.eval()
-    if args.method != 'SenpisFaster':
+    if args.method in ['random','weight']:
         for module in model.modules():
             if isinstance(module, nn.Conv2d):
                 if args.method == 'random':
@@ -41,8 +41,14 @@ def prune_model(model: nn.Module, num_classes: int = None, train_loader = None, 
                     prune.ln_structured(module, 'weight', amount=args.list_pruning[pos],dim=0,n=2)
                 prune.remove(module,'weight')
                 pos += 1
-    else:
+                
+    elif args.method == 'SenpisFaster':
         SenpisFaster(model, num_classes, train_loader, args.list_pruning)
+
+    elif args.method == 'new_method':
+        # Implement your new pruning method here
+        # Example: prune.new_method(module, 'weight', amount=args.list_pruning[pos], dim=0)
+        pass
 
     simplify.simplify(model, torch.ones((1, 3, 224, 224)).to(args.device), fuse_bn=False)
 
