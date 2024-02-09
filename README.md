@@ -14,7 +14,6 @@ or if you want to run the latest version of the code, you can install from git:
 
 ```bash
 git clone https://github.com/DEEP-CGPS/FlexiPrune
-cd flexiprune
 pip3 install -r requirements.txt
 ```
 
