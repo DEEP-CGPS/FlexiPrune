@@ -13,7 +13,7 @@ LONG_DESCRIPTION = 'This package allows to prune in different percentages each l
 
 # Setting up
 setup(
-    name="pruningdistribution",
+    name="flexiprune",
     version=VERSION,
     author="DEEP-CGPS",
     author_email="<est.cesar.pachon@unimilitar.edu.co>",
