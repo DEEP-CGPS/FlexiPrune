@@ -1,20 +1,20 @@
-# PruningDistribution
+# FlexiPrune
 
 Library for pruning convolutional neural networks by varying the pruning distribution.
 
 ## Installation
 
-PruningDistribution can be installed using pip:
+FlexiPrune can be installed using pip:
 
 ```bash
-pip install pruningdistribution==0.1.0
+pip install flexiprune==0.1.0
 ```
 
 or if you want to run the latest version of the code, you can install from git:
 
 ```bash
-git clone https://github.com/DEEP-CGPS/PruningDistribution
-cd PruningDistribution
+git clone https://github.com/DEEP-CGPS/FlexiPrune
+cd flexiprune
 pip3 install -r requirements.txt
 ```
 
@@ -24,7 +24,7 @@ pip3 install -r requirements.txt
 
 ### Main function
 
-The main function "PruningDistribution"  provides all the tools necessary to prune, train, and generate performance metrics by varying the pruning distribution. 
+The main function "flexiprune"  provides all the tools necessary to prune, train, and generate performance metrics by varying the pruning distribution. 
 
 #### Parameters
 
@@ -53,7 +53,7 @@ Parse command-line arguments for configuring and training a neural network model
 import sys
 import torch
 import torchvision
-from pruningdistribution import *
+from flexiprune import *
 import argparse
 sys.argv = ['']
 
@@ -132,7 +132,7 @@ prune_model(model,num_classes,trainset, args)
 
 ### Submodules
 
-pruningdistribution contains 8 modules that allow to train, prune, generate result tables, and identify model properties (e.g., parameters, number of layers):
+flexiprune contains 8 modules that allow to train, prune, generate result tables, and identify model properties (e.g., parameters, number of layers):
 
 #### modelParams:
 
