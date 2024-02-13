@@ -7,7 +7,7 @@ from torchvision import transforms
 from tqdm import tqdm
 import torch.nn as nn
 from torcheval.metrics.functional import multiclass_f1_score, multiclass_accuracy
-from pruningdistribution.custom_dataset import dataset_list, CustomDataset
+from flexiprune.custom_dataset import dataset_list, CustomDataset
 
 
 ##===================================================================================##
