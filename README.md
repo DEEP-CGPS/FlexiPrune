@@ -103,9 +103,6 @@ parser.add_argument('--list_pruning', type=list,
 
 args = parser.parse_args()
 
-
-args = parser.parse_args()
-
 if args.device is None:
     import torch
     args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
