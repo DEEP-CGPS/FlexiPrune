@@ -33,7 +33,7 @@ def evaluate_models(args,metric:bool = True, pruning_methods:str = "random|weigh
     df = pd.DataFrame({'model_paths': model_paths})
     df['pruning_type'] = df['model_paths'].apply(lambda x: re.search(fr'({pruning_methods})', x).group() if re.search(fr'({pruning_methods})', x) else None)
     df['model_type'] = df['model_paths'].apply(lambda x: re.search(fr'({pruning_distribution})', x).group())
-    df['pr_base'] = df['model_paths'].apply(lambda x: re.search(fr'({gpd})', x).group() if re.search(fr'({gpd})', x) else None)
+    df['gpd_base'] = df['model_paths'].apply(lambda x: re.search(fr'({gpd})', x).group() if re.search(fr'({gpd})', x) else None)
     df['seed'] = df['model_paths'].apply(lambda x: re.search(r'(?<=SEED_)\d+', x).group() if re.search(r'(?<=SEED_)\d+', x) else None)
     df['finetuned'] = df['model_paths'].apply(lambda x: 'FT' in x)
     df['dataset'] = df['model_paths'].apply(lambda x: re.search(fr'{args.dataset}', x).group())
