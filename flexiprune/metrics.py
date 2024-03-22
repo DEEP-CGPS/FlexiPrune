@@ -57,7 +57,7 @@ def evaluate_models(args,metric:bool = True, pruning_methods:str = "random|weigh
 
     return df
 
-def box_plot_distribution(df:pd.DataFrame(),list_pruning:list,list_gpd_base:list, plot_name:str = 'PD_BOXPLOT.png', finetuned:bool = True):
+def box_plot_distribution(df:pd.DataFrame(),list_pruning:list,list_gpd_base:list, miny: int = 70, maxy: int = 100, file_name:str = 'PD_BOXPLOT.png', finetuned:bool = True):
     """
     Generate a box plot to visualize distribution of metrics across different model types based on pruning and GPD base.
 
@@ -92,12 +92,12 @@ def box_plot_distribution(df:pd.DataFrame(),list_pruning:list,list_gpd_base:list
     # Customize grid lines
     ax.yaxis.grid(True)
     ax.xaxis.grid(True)
-    
+    plt.ylim(miny, maxy)
     # Set plot labels
     ax.set(xlabel='Pruning Distributions', ylabel=df.metric_used.unique()[0].upper())
     
     # Save the plot as an image
-    plt.savefig(plot_name, dpi=600)
+    plt.savefig(file_name, dpi=600)
     
     # Show the plot
     plt.show()
@@ -124,10 +124,10 @@ def bar_plot_distribution(df: pd.DataFrame, pdis: str, miny: int = 70, maxy: int
     # Filter DataFrame based on specified model type and fine-tuned condition
     df_pruned = df[(df['model_type'] == pdis) | (df['pruning_type'] != df['pruning_type'])]
     df_pruned = df_pruned[(df_pruned['finetuned'] == finetuned) | (df_pruned['pruning_type'] != df_pruned['pruning_type'])]
-    
+
     # Fill NaN values with 'Model UNPRUNED'
     df_pruned.fillna('Model UNPRUNED', inplace=True)
-    
+
     # Sort DataFrame by pruning type
     df_pruned = df_pruned.sort_values(by='pruning_type')
 
@@ -145,14 +145,14 @@ def bar_plot_distribution(df: pd.DataFrame, pdis: str, miny: int = 70, maxy: int
     # Add percentage labels to the bars
     for i in ax.containers:
         ax.bar_label(i, fmt="%.1f%%", fontsize=8, padding=3)
-    
+
     # Save the plot as an image
     plt.savefig(file_name, dpi=600)
-    
+
     # Show the plot
     plt.show()
 
-def bar_plot_method(df: pd.DataFrame, pruning_type: str, miny: int = 70, maxy: int = 100, finetuned: bool = True, file_name: str = 'PRUNING_METHOD_EXAMPLE.png'):
+def bar_plot_method(df: pd.DataFrame, pruning_type: str, miny: int = 70, maxy: int = 100, file_name: str = 'PRUNING_METHOD_EXAMPLE.png', finetuned: bool = True):
     """
     Generate a bar plot to visualize the performance metrics of different model types for a specific pruning method.
 

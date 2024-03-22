@@ -14,5 +14,8 @@ __all__ = [
     "prune_model",
     "dataset_list",
     "CustomDataset",
-    "evaluate_models"
+    "evaluate_models",
+    "box_plot_distribution",
+    "bar_plot_distribution",
+    "bar_plot_method"
 ]
