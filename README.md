@@ -23,7 +23,7 @@ pip3 install -r requirements.txt
 
 ### Main function
 
-The main function "flexiprune"  provides all the tools necessary to prune, train, and generate performance metrics by varying the pruning distribution. 
+The main function "flexiprune"  provides all the tools necessary to prune, train, and generate performance metrics by varying the pruning distribution.
 
 #### Parameters
 
