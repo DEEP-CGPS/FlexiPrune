@@ -51,13 +51,13 @@ Parse command-line arguments for configuring and training a neural network model
 
 import sys
 import torch
-import torchvision
 from flexiprune import *
 import argparse
+
 sys.argv = ['']
 
-import argparse
-import torch
+
+
 
 parser = argparse.ArgumentParser(description='Parameters for training')
 
