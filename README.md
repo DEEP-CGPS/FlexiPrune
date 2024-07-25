@@ -56,9 +56,6 @@ import argparse
 
 sys.argv = ['']
 
-
-
-
 parser = argparse.ArgumentParser(description='Parameters for training')
 
 parser.add_argument('--model_architecture', type=str, default="VGG16", 
