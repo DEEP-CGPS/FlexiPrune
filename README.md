@@ -164,14 +164,15 @@ Returns a dataframe containing the summary of the pruned model information, this
 If you use this software for research or application purposes, please use the following citation:
 
 ```bibtex
-@article{ ,
-  title = {},
-  journal = {SoftwareX},
-  volume = {},
-  pages = {},
-  year = {},
-  issn = {},
-  doi = {},
-  url = {},
-  author = {},
+@article{PACHON2024101858,
+title = {FlexiPrune: A Pytorch tool for flexible CNN pruning policy selection},
+journal = {SoftwareX},
+volume = {27},
+pages = {101858},
+year = {2024},
+issn = {2352-7110},
+doi = {https://doi.org/10.1016/j.softx.2024.101858},
+url = {https://www.sciencedirect.com/science/article/pii/S2352711024002280},
+author = {Cesar G. Pachon and Javier O. Pinzon-Arenas and Dora Ballesteros},
+keywords = {Deep Learning, CNN, Pruning method, Pruning distribution},
 }
