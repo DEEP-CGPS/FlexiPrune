@@ -3,7 +3,7 @@ from .train import *
 from .pruning_utils import *
 from .custom_dataset import *
 from .metrics import *
-
+from .pd_calculate import PruningDistributionCalculator
 __all__ = [
     "ModelParams",
     "train_epoch",
@@ -17,5 +17,6 @@ __all__ = [
     "evaluate_models",
     "box_plot_distribution",
     "bar_plot_distribution",
-    "bar_plot_method"
+    "bar_plot_method",
+    "PruningDistributionCalculator"
 ]

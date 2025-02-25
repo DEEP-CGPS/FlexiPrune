@@ -78,10 +78,10 @@ class PruningDistributionCalculator:
         
         PD_new = np.trunc(self.pruning_distributions[self.model][PD] * GPR / 50)
         
-        PD_output_size = len(self.pruning_distributions[self.model][PD]) + 2
+        PD_output_size = len(self.pruning_distributions[self.model][PD]) + 3
         PD_output = np.zeros(PD_output_size)
         PD_output[:len(PD_new)] = PD_new
+        PD_output[-3] = GPR
         PD_output[-2] = GPR
-        PD_output[-1] = GPR
-        
-        return PD_output
+        PD_output[-1] = 0
+        return PD_output/100
