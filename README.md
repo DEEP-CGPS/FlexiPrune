@@ -159,6 +159,13 @@ Prunes the model, taking into account the arguments.
 
 Returns a dataframe containing the summary of the pruned model information, this to facilitate its later analysis.
 
+#### pd_calculate:
+This module allows, given a GPR and a PD, to calculate the pruning list.
+
+## Acknowledgment
+- This work has been sponsored by the Universidad Militar Nueva Granada - Vicerrectoría de Investigaciones , with the project INV-ING-3947.
+- To engineer Laura Catalina Rozo, from the Telecommunications Engineering programme at the Universidad Militar Nueva Granada, for her contribution to the development of the PruningDistributionCalculator module, which allows the user, given a GPR and PD, to generate the pruning list.
+- 
 ## Citing
 
 If you use this software for research or application purposes, please use the following citation:
